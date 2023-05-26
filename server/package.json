@@ -1,0 +1,22 @@
+{
+  "name": "solution",
+  "version": "1.0.0",
+  "description": "Please find below an Express application that connects to a local MongoDB instance, each document has the following structure for `schools` collection:\r ```JavaScript\r {\r     \"_id\":1,\r     \"name\": \"Maharishi International University\",\r     \"code\": \"MIU\",\r     \"address\": \"Fairfield, IA\",\r     \"teachers\": [\r         {\"_id\":1, \"name\":\"Asaad\"},\r         {\"_id\":2, \"name\":\"Umur\"}\r     ],\r     \"courses\":[\r         {\"_id\":1, \"title\": \"CS477\", \"students\":[\r             {\"_id\":1, \"name\":\"John\"},\r             {\"_id\":2, \"name\":\"Selin\"}\r         ]},\r         {\"_id\":2, \"title\": \"CS571\", \"students\":[\r             {\"_id\":1, \"name\":\"Alican\"},\r             {\"_id\":2, \"name\":\"Dean\"}\r         ]},\r         {\"_id\":3, \"title\": \"CS415\", \"students\":[\r             {\"_id\":1, \"name\":\"Tina\"},\r             {\"_id\":2, \"name\":\"Clyde\"}\r         ]}\r     ]\r }\r ```\r Your are responsible on writing code to create routes in MVC model for the following functions.\r 1. Create a new school with name, code & address (code should be unique)\r ```\r POST http://localhost:3000/schools \r With the body\r {\r     name: \"Maharishi International University\",\r     code: \"MIU\",\r     address: \"Fairfield, IA\"\r }\r ```\r 2. Update address of an existing school\r ```\r PUT http://localhost:3000/schools/{code} \r With the body\r {\r     name: \"Maharishi International University 2\"\r }\r ```\r 3. Delete a school\r ```\r DELETE http://localhost:3000/schools/{code} \r ```\r 4. Add a teacher *(level 1)*\r ```\r PUT http://localhost:3000/schools/{code}/teachers \r With the body\r {\r     _id: ObjectId(\"falfl;asdkfja;sdfjfadf),\r     name: \"Asaad\"\r }\r ```\r 5. Update an existing teacher by ID *(level 1)*\r ```\r PATCH http://localhost:3000/schools/{code}/teachers/{id} \r With the body\r {\r     name: \"Thao\"\r }\r ```\r 6. Delete an existing teacher by ID *(level 1)*\r ```\r DELETE http://localhost:3000/schools/{code}/teachers/{id}\r ```\r 7. Add a new course with a title *(level 1)*\r ```\r PUT http://localhost:3000/schools/{code}/courses \r With the body\r {\r     _id: ObjectId(\"falfl8asdkfja6sdfjfadf),//\r     title: \"CS477\"\r }\r ```\r 8. Add a new student to an existing course *(level 2)*\r ```\r PUT http://localhost:3000/schools/{code}/courses/{id}/students \r With the body\r {\r     _id: ObjectId(\"falfl8asdkfja6sdfjfadf),//\r     name: \"Michael\"\r }\r ```\r 9. Update a student's name *(level 2)*\r ```\r PATCH http://localhost:3000/schools/{code}/courses/{id}/students/{id} \r With the body\r {\r     name: \"John\"\r }\r ```\r 10. Delete a student *(level 2)*\r ```\r DELETE http://localhost:3000/schools/{code}/courses/{id}/students/{id} \r ```\r * New\r 11. Create a middleware to ensure the school code is unique when inserting a new school\r 12. Create a middleware to ensure the data containing _id as an ObjectId when inserting a course, a teacher, or a student\r 13. Get all schools\r ```\r GET http://localhost:3000/schools\r ```\r 14. Get all teachers from a school\r ```\r GET http://localhost:3000/schools/{code}/teachers\r ```\r 15. Get all courses from a school\r ```\r GET http://localhost:3000/schools/{code}/courses\r ```\r 16. Get all students from a course and sort them if needed\r ```\r GET http://localhost:3000/schools/{code}/courses/{id}/students?sort=true\r ```",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.1.0",
+    "mongoose": "^7.0.2",
+    "nodemon": "^2.0.21"
+  }
+}
